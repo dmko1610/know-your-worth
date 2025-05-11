@@ -1,4 +1,5 @@
 import CountrySelector from '@/features/country-selector';
+import CurrencySwitcher from '@/features/currency-switcher';
 import EmploymentTypeSelector from '@/features/employment-type-selector';
 import useTaxRate from '@/shared/hooks/useTaxRate';
 import { type CountryCode, countries } from '@/shared/model/country';
@@ -36,6 +37,12 @@ function App() {
       <Typography variant="h6">
         Tax Rate: <strong>{tax}%</strong>
       </Typography>
+
+      <CurrencySwitcher
+        amount={30000}
+        baseCurrency={countries[country].currency}
+        targetCurrency="USD"
+      />
     </Container>
   );
 }
