@@ -1,6 +1,7 @@
 import CountrySelector from '@/features/country-selector';
 import CurrencySwitcher from '@/features/currency-switcher';
 import EmploymentTypeSelector from '@/features/employment-type-selector';
+import SalaryConverter from '@/features/salary-converter';
 import useTaxRate from '@/shared/hooks/useTaxRate';
 import { type CountryCode, countries } from '@/shared/model/country';
 import type { EmploymentType } from '@/shared/model/employment';
@@ -43,6 +44,7 @@ function App() {
         baseCurrency={countries[country].currency}
         targetCurrency="USD"
       />
+      <SalaryConverter salary={30000} />
     </Container>
   );
 }
