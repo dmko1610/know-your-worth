@@ -1,27 +1,33 @@
+import { type CountryCode, countries } from '@/shared/model/country';
+
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
+interface CountryInfo {
+  name: string;
+  code: CountryCode;
+  currency: string;
+}
+
 interface CountrySelectorProps {
-  countries: string[];
-  selectedCountry: string;
-  onChange: (country: string) => void;
+  selected: CountryCode;
+  onChange: (country: CountryCode) => void;
 }
 
 export default function CountrySelector({
-  countries,
-  selectedCountry,
+  selected,
   onChange,
 }: CountrySelectorProps) {
   return (
     <FormControl fullWidth>
       <InputLabel>Country</InputLabel>
       <Select
-        labelId="country-label"
-        value={selectedCountry}
-        onChange={e => onChange(e.target.value)}
+        label="Country"
+        value={selected}
+        onChange={e => onChange(e.target.value as CountryCode)}
       >
-        {countries.map((country: string) => (
-          <MenuItem key={country} value={country}>
-            {country}
+        {Object.values(countries).map((country: CountryInfo) => (
+          <MenuItem key={country.code} value={country.code}>
+            {country.name}
           </MenuItem>
         ))}
       </Select>
