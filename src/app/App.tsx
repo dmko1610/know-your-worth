@@ -39,11 +39,6 @@ function App() {
         Tax Rate: <strong>{tax}%</strong>
       </Typography>
 
-      <CurrencySwitcher
-        amount={30000}
-        baseCurrency={countries[country].currency}
-        targetCurrency="USD"
-      />
       <SalaryConverter salary={30000} />
     </Container>
   );
